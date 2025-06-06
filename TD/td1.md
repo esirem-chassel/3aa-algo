@@ -82,6 +82,11 @@ flowchart TD
 
 Remplacez les `?` et complétez les éventuels éléments manquants.
 
+### 1.6 - Séparation
+Séparez cet algorigramme en deux algorigrammes : `askEven` et `isEven`.
+Le second algorigramme n'effectuera que la vérification pair/impair en retournant 1 si pair et 0 si impair. Aucun affichage ne sera fait.
+Le premier algorigramme réalisera la demande à l'utilisateur et appellera `isEven`, puis affichera "pair" ou "impair" selon le résultat.
+
 
 ## 2.0 - Conception basique
 
