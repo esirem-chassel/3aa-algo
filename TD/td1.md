@@ -80,7 +80,7 @@ flowchart TD
     I --> B
 ```
 
-Remplacez les `?`.
+Remplacez les `?` et complétez les éventuels éléments manquants.
 
 
 ## 2.0 - Conception basique
