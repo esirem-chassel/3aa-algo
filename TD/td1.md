@@ -70,7 +70,7 @@ flowchart TD
     B --> C[/Saisie x/]
     C --> D{Est un nombre}
     D -->|?| B
-    D -->|?| E{y égal à 0}
+    D -->|?| E{x égal à 0}
     E -->|Oui| Z([fin])
     E --> F[y ← x % 2]
     F --> G{y égal à 0}
