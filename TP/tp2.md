@@ -76,6 +76,30 @@ Si le joueur arrête, il remporte la cagnotte et le programme s'arrête.
 Si le joueur continue, passez au tour suivant.
 Si le joueur gagne au dernier tour, le programme s'arrête.
 
+## 3.0 Modularité
+
+### 3.1 Lecture de fichiers
+
+Actuellement, les questions sont dans un tableau statiquement alloué, codé en dur dans le code.
+L'objectif est de stocker les questions dans un unique fichier, au format indiqué.
+
+Lors de la lecture du fichier, la [fonction `fgets`](https://learn.microsoft.com/fr-fr/cpp/c-runtime-library/reference/fgets-fgetws?view=msvc-170) vous sera utile.
+
+Pour faciliter cet exercice, nous allons considérer que toutes les questions seront dans un même fichier,
+les unes après les autres suivant un format simplifié.
+Le fichier unique sera nommé `questions.qpdp`.
+
+> [!Caution]
+> C, particulièrement, est très soumis à différentes considérations de portabilité et de sécurité.
+> Par exemple, il existe une fonction POSIX, `getline()`, permettant d'obtenir une ligne de manière sûre.
+> Seulement, Microsoft, par politique ou condition technique non-communiquée,
+> refuse d'implémenter cette fonction dans ses API disponibles via C (et Windows n'étant pas POSIX...).
+> Cela signifie concrètement que cette fonction n'est PAS disponible dans Windows.
+> Vous allez donc trouver un grand nombre de retours sur la sûreté de `getline`, de `fgets`...
+> Pour cet exercice, nous allons ignorer ces considérations.
+
+Attention, lors de l'implémentation, à réaliser une ou plusieurs fonctions selon vos besoins.
+
 ## Annexes
 
 ### Liste de questions (initialisation globale)
@@ -132,3 +156,32 @@ char** UNEQUESTION(int k) {
 	return ALLQUESTIONS[k];
 }
 ```
+
+### Nouveau format simplifié
+
+```
+=====
+Contenu de la question 1
+==A==
+Réponse A
+==B==
+Réponse B
+==C==
+Réponse C
+==D==
+Réponse D
+=R=X=
+=====
+Contenu de la question 1
+==A==
+Réponse A
+==B==
+Réponse B
+==C==
+Réponse C
+==D==
+Réponse D
+=R=X=
+```
+
+*Rappel : `X` est la bonne réponse attendue à la question parmi `A`, `B`, `C` ou `D`.*
