@@ -104,7 +104,7 @@ Tester l'algorithme avec les valeurs de `x` suivantes : `-2` , `10` , `5` et `3`
 ## 3.0 - Conception, on continue
 
 ### 3.1 - Facteur
-Ecrire un algorigramme et un algorithme demandant à l'utilisateur un nombre `x` puis un nombre `y`, qui calcule `x<sup>y</sup>` et l'affiche. Vous ne pouvez utiliser de fonctions supplémentaires.
+Ecrire un algorigramme et un algorithme demandant à l'utilisateur un nombre `x` puis un nombre `y`, qui calcule <code>x<sup>y</sup></code> et l'affiche. Vous ne pouvez utiliser de fonctions supplémentaires.
 
 ### 3.2 - Prix unitaire
 Ecrire un algorigramme et un algorithme demandant à l’utilisateur un prix unitaire et un nombre d’articles. Cet algorithme devra pouvoir être exécuté avec un argument `taxrate` pour le taux de taxe. Informez l’utilisateur du prix TTC total et par article. Enfin, renvoyez le prix TTC total.
