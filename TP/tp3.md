@@ -254,4 +254,52 @@ Regardez cette règle :
 
 D'après-vous, que fait-elle ?
 
-## 2.4 Encore plus loin !
+## 2.4 Conditions et structures UNIX
+
+Qui dit variables et standard UNIX dit potentiellements structures UNIX, dont... [des conditions](https://www.gnu.org/software/make/manual/html_node/Conditional-Syntax.html).
+
+Dans ce langage, les conditions sont `ifeq`, `else` et clôturées par un `endif`.
+Le `ifeq` est en réalité une structure spéciale qui prend deux paramètres, les deux opérandes à comparer.
+
+L'objectif de cette structure est de vérifier, par exemple, si une variable DEBUG est placée, ou encore si tel ou tel compilateur est utilisé, pour gérer les différents cas.
+
+
+## 2.5 Phony Targets
+
+Make utilise les targets (ou cibles) comme des noms de fichiers.
+Ce comportement est utile pour vérifier si la cible (ce qui est à exécuter, donc) est plus récente ou ancienne que ses dépendances (ce dont elle a besoin).
+Parfois, on désire éviter ce comportement, comme dans ce cas précis :
+
+```make
+clean:
+    rm *.o
+```
+
+Si aucun fichier nommé "clean" n'existe, ceci fonctionne plus ou moins bien, ou en tout cas, va lancer le clean à chaque `make clean`.
+Mais comme aucune dépendance n'est présente, si un fichier `clean` existe, votre règle deviendra inutilisable !
+
+Une cible spéciale existe pour gérer ces cas : `.PHONY`. Déclarer une cible `.PHONY` va placer toutes ses dépendances comme étant purement "virtuelles" (ou littérales), et non plus des noms de fichiers. Dans notre exemple :
+
+```make
+.PHONY: clean
+clean:
+    rm *.o
+```
+
+Ce comportement nous est très utile pour "virtualiser" des rassemblements de routines au sein d'une même routine générale, par exemple :
+
+```make
+all : prog1 prog2 prog3
+.PHONY : all
+
+prog1 : prog1.o utils.o
+        cc -o prog1 prog1.o utils.o
+
+prog2 : prog2.o
+        cc -o prog2 prog2.o
+
+prog3 : prog3.o sort.o utils.o
+        cc -o prog3 prog3.o sort.o utils.o
+```
+
+Ceci va lancer les trois routines à chaque `make`, tout en laissant la possibilité d'effectuer un `make prog1` pour ne lancer que la routine `prog1`.
