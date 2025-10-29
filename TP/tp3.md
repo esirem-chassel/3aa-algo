@@ -303,3 +303,35 @@ prog3 : prog3.o sort.o utils.o
 ```
 
 Ceci va lancer les trois routines à chaque `make`, tout en laissant la possibilité d'effectuer un `make prog1` pour ne lancer que la routine `prog1`.
+
+## 2.6 Include
+
+Il existe certaines routines prédéfinies, comme `Include`.
+Cette directive permet d'inclure les dépendances pour l'exécution de votre code,
+y compris les dépendances DANS votre code, qui sont décrites par des fichiers `.d`, déduits des `.h`, et généralement au nommage identique à celui des `.o`.
+
+Une façon aisée de faire est d'utiliser la substitution bash :
+```
+DEP := $(OBJ:.o=.d)
+
+Include ${DEP}
+```
+
+Ainsi, la première ligne va, dans la liste des objets, remplacer chaque `.o` par un `.d` pour constituer la liste de dépendances, et la ligne suivante va toujours inclure ces dépendances.
+
+Il demeure un problème : `Include` ne repose pas sur un système de cibles, et il faut donc lui préciser qu'on veut ignorer toute erreur, au cas où les fichiers n'existeraient pas. Pour cela, on préfixe le `Include` d'un symbole `-`.
+
+# 3.0 Un vrai makefile !
+
+En suivant les différentes indications, préparez un makefile adapté à vos projets.
+On considérera un projet qui contiendra systématique :
+- un dossier "src" contenant les sources à compiler
+- un dossier "bin" contenant l'exécutable mais aussi les fichiers `.o`, et autres fichiers "temporaires"
+- le makefile, à la racine du projet
+
+Pour cela, rappellez-vous les différentes étapes nécessaires :
+- on définit les différentes "variables", y compris le compilateur nécessaire
+- on définit la ou les target nécessaires, généralement june première faisant "tout", nommée `all`
+- on définit les différentes étapes de la compilation, selon ces targets, soit la compilation (`-c`) puis le linking (`-o`)
+- on définit une target PHONY générale qui va lancer la target générale, et finir par le nettoyage des fichiers qui ne sont plus utiles
+
