@@ -64,5 +64,3 @@ Décomposez les différents éléments de jeu en fonction, et préparez l'algori
 ## 2. Développement
 
 Lancez-vous dans le développement !
-
-.. propal sol guidée
