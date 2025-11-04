@@ -304,7 +304,7 @@ prog3 : prog3.o sort.o utils.o
 
 Ceci va lancer les trois routines à chaque `make`, tout en laissant la possibilité d'effectuer un `make prog1` pour ne lancer que la routine `prog1`.
 
-## 2.6 Include
+## 2.6 Include (et substitution)
 
 Il existe certaines routines prédéfinies, comme `Include`.
 Cette directive permet d'inclure les dépendances pour l'exécution de votre code,
@@ -321,17 +321,38 @@ Ainsi, la première ligne va, dans la liste des objets, remplacer chaque `.o` pa
 
 Il demeure un problème : `Include` ne repose pas sur un système de cibles, et il faut donc lui préciser qu'on veut ignorer toute erreur, au cas où les fichiers n'existeraient pas. Pour cela, on préfixe le `Include` d'un symbole `-`.
 
+## 2.7 Fonctions
+
+Il existe différentes fonctions dans GNU Make. Ces fonctions sont dépendantes de GNU Make, donc pourraient ne pas fonctionner sous d'autres make !
+
+Par exemple, [wildcard](https://www.gnu.org/software/make/manual/html_node/Wildcard-Function.html) vous permet, à partir d'un joker de chemins de fichiers, de créer une liste des chemins existants, séparés par un espace.
+
+Un exemple, pour lister tous les fichiers `.c` :
+```make
+$(wildcard *.c)
+```
+
+Il existe bien d'autres fonctions utiles dans GNU Make, notemment sur le traitement du texte : https://www.gnu.org/software/make/manual/html_node/Text-Functions.html
+
 # 3.0 Un vrai makefile !
 
+## 3.1 Un cas simple
+
 En suivant les différentes indications, préparez un makefile adapté à vos projets.
-On considérera un projet qui contiendra systématique :
+
+Pour cela, rappellez-vous les différentes étapes nécessaires :
+- on définit les différentes "variables", y compris le compilateur nécessaire
+- on définit la ou les target nécessaires, généralement une première faisant "tout", nommée `all`
+- on définit les différentes étapes de la compilation, selon ces targets, soit la compilation (`-c`) puis le linking (`-o`)
+- on définit une target PHONY générale qui va lancer la target générale, et finir par le nettoyage des fichiers qui ne sont plus utiles
+
+
+## 3.2 Avec séparation des dossiers
+
+On considérera un projet qui contiendra systématiquement :
 - un dossier "src" contenant les sources à compiler
 - un dossier "bin" contenant l'exécutable mais aussi les fichiers `.o`, et autres fichiers "temporaires"
 - le makefile, à la racine du projet
 
-Pour cela, rappellez-vous les différentes étapes nécessaires :
-- on définit les différentes "variables", y compris le compilateur nécessaire
-- on définit la ou les target nécessaires, généralement june première faisant "tout", nommée `all`
-- on définit les différentes étapes de la compilation, selon ces targets, soit la compilation (`-c`) puis le linking (`-o`)
-- on définit une target PHONY générale qui va lancer la target générale, et finir par le nettoyage des fichiers qui ne sont plus utiles
+https://www.gnu.org/software/make/manual/html_node/Wildcard-Function.html
 
