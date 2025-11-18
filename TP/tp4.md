@@ -52,6 +52,8 @@ A chaque tour, on affichera le plateau de jeu en ASCII.
 
 Lors de l'affichage de la main du joueur, on indiquera un ordre des cartes, de 1 à N.
 
+Lorsque l'utilisateur utilise un +4, on implémentera une probabilité aléatoire que l'ordinateur appelle au bluff.
+
 Après la pose d'une carte du joueur "humain", on attendra une saisie utilisateur, pour passer au joueur suivant. Dans la majorité des cas, le joueur n'aura qu'à appuyer sur entrée.
 S'il saisit "UNO" alors qu'il ne lui reste qu'une carte, tout va bien. S'il oublie de saisir "UNO" alors qu'il ne lui reste qu'une carte, alors il doit en piocher deux.
 Enfin, s'il saisit "UNO" alors qu'il lui reste plus d'une carte, alors il doit en piocher deux.
