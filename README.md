@@ -10,7 +10,8 @@ En effet, une réflexion personnelle et des habitudes personnelles sont nécessa
 
 ## Liens utiles
 
-[Documentation C/C++ Microsoft (pour les systèmes Windows)](https://learn.microsoft.com/en-us/cpp/c-language/?view=msvc-170
+[Documentation C/C++ Microsoft (pour les systèmes Windows)](https://learn.microsoft.com/en-us/cpp/c-language/?view=msvc-170)
+
 [Référence C (pour les systèmes POSIX)](https://cppreference.com/c/language)
 
 *Il est à noter qu'il n'existe pas de réelle documentation exhaustive pour tous les systèmes, pour diverses raisons.*
