@@ -24,12 +24,26 @@ Les fonctions suivantes sont fournies :
   - 0 : chaîne
   - 1 : entier
   - 2 : flottant
+  
+  Exemple : `APPEL VERIF AVEC valeur=maVariable, type=1 # Résultat : VRAI`
 - `LSQUESTIONS` qui donne la liste des questions disponibles, sous forme de clefs
+  
+  Exemple : `myQuestions ← APPEL LSQUESTIONS # Résultat : [0, 1, 2, 4, 9, 11]`
 - `UNEQUESTION` qui, à partir d'une clef de question, renvoie une liste sous la forme : `[Contenu, Réponse A, Réponse B, Réponse C, Réponse D, Réponse valide]`
+  
+  Exemple : `quest ← APPEL UNEQUESTION avec clef=4 # Résultat : ["Quelle est la couleur du cheval blanc d'Henri IV ?", "Blanc", "Bleu", "Jaune", "Vert", "Blanc"]`
 - `MAJ` qui transforme une chaîne en majuscules
+  
+  Exemple : `m ← APPEL MAJ AVEC chaine="min"`
 - `MIN` qui transforme une chaîne en minuscules
+  
+  Exemple : `m ← APPEL MIN AVEC chaine="TEST")`
 - `MST` qui renvoie le timestamp UNIX actuel
+  
+  Exemple : `t ← APPEL MST # Résultat : 1790155552`
 - `LIRENB` qui effectue une lecture **non-bloquante** d'une saisie utilisateur. Cette fonction prend un paramètre : le nom d'une fonction à exécuter une fois qu'une saisie utilisateur est détectée et validée
+  
+  Exemple : `APPEL LIRENB AVEC fonction="LECTURESAISIE"`
 
 ## 1.0 Fonctions de base
 
